@@ -1,8 +1,10 @@
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function POST(req) {
   try {
     const { description } = await req.json(); // User's 1-2 sentence input
+    console.log(description)
 
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -13,7 +15,7 @@ export async function POST(req) {
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
-    console.log(responseText)
+    
 
     const jsonStart = responseText.indexOf("{");
     const jsonEnd = responseText.lastIndexOf("}") + 1;
@@ -22,7 +24,7 @@ export async function POST(req) {
         throw new Error("Valid JSON not found in the response.");
       }
       const jsonString = responseText.substring(jsonStart, jsonEnd);
-     console.log(jsonString)
+    
 
      let formStructure;
      try {
@@ -30,11 +32,11 @@ export async function POST(req) {
       } catch (err) {
         throw new Error("Extracted JSON is invalid.");
       }
-      console.log(formStructure)
-
+     
+    console.log(  formStructure)
     return new Response(JSON.stringify({ text: formStructure }), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json","Access-Control-Allow-Origin": "*", },
     });
   } catch (error) {
     console.error("Error generating form:", error);
