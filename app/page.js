@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 
 // Function to fetch the form structure from the backend
 async function fetchFormStructure(description) {
-
-  console.log("Sending request to backend with description:", description);
+console.log(description)
   const response = await fetch('/api/form-builder', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -13,12 +12,12 @@ async function fetchFormStructure(description) {
   });
 
   if (!response.ok) {
-    console.error("Error in API response:", response.status, response.statusText);
+    
     throw new Error('Failed to generate form.');
   }
-  console.log("Raw Response:", response);
   const data = await response.json();
-  console.log(data)
+   
+  
   return data.text; // Access the parsed form structure
 }
 
@@ -29,15 +28,15 @@ export default function FormBuilder() {
   const [loading, setLoading] = useState(false);
 
   // Handle the submission of form description
-  const handleSubmitDescription = async () => {
-
-    console.log("Submitting description:", formDescription);
+  const handleSubmitDescription = async (e) => {
+     
     setLoading(true);
     setError(null);
     try {
       const form = await fetchFormStructure(formDescription);
+     
       setFormStructure(form);
-      console.log(form)
+       
     } catch (err) {
       setError(err.message);
     } finally {
@@ -57,7 +56,7 @@ export default function FormBuilder() {
               type={field.type}
               placeholder={field.placeholder}
               required={field.required}
-              className="border p-2 w-full mt-1"
+              className="border rounded-lg p-2 w-full mt-1"
             />
           </label>
         );
@@ -68,7 +67,7 @@ export default function FormBuilder() {
             <textarea
               placeholder={field.placeholder}
               required={field.required}
-              className="border p-2 w-full mt-1"
+              className="border rounded-lg p-2 w-full mt-1"
             ></textarea>
           </label>
         );
@@ -105,7 +104,7 @@ export default function FormBuilder() {
           <button
             key={field.label}
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 mt-2 rounded"
+            className="bg-blue-500 hover:bg-blue-600 duration-300 text-white px-4 py-2 mt-2 rounded-lg"
           >
             {field.label}
           </button>
@@ -117,27 +116,27 @@ export default function FormBuilder() {
 
   return (
     <div className="p-4 max-w-lg mx-auto">
-      <h1 className="text-xl font-bold mb-4">Dynamic Form Builder</h1>
+      <h1 className="text-xl text-emerald-50 font-bold mb-4">Dynamic Form Builder</h1>
       <div className="mb-6">
         <textarea
           value={formDescription}
           onChange={(e) => setFormDescription(e.target.value)}
           placeholder="Describe the form you want..."
-          className="border p-2 w-full"
+          className="border rounded-lg  p-2 w-full"
         ></textarea>
         <button
           onClick={handleSubmitDescription}
-          className="bg-green-500 text-white px-4 py-2 mt-2 rounded"
+          className="bg-green-500 hover:bg-green-600 duration-300 text-white px-4 py-2 mt-2 rounded"
         >
           Generate Form
         </button>
       </div>
 
-      {loading && <p className="text-blue-500">Generating form...</p>}
+      {loading && <p className="text-white-500 ">Generating form...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
       {formStructure && (
-        <form className="border p-4 mt-4 rounded shadow">
+        <form className="border p-4 mt-4 rounded-lg shadow">
           <h2 className="text-lg font-semibold mb-4">{formStructure.formName}</h2>
           {formStructure.fields.map(renderField)}
         </form>
