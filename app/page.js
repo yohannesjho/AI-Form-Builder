@@ -12,12 +12,12 @@
 //   });
 
 //   if (!response.ok) {
-    
+
 //     throw new Error('Failed to generate form.');
 //   }
 //   const data = await response.json();
-   
-  
+
+
 //   return data.text; // Access the parsed form structure
 // }
 
@@ -29,14 +29,14 @@
 
 //   // Handle the submission of form description
 //   const handleSubmitDescription = async (e) => {
-     
+
 //     setLoading(true);
 //     setError(null);
 //     try {
 //       const form = await fetchFormStructure(formDescription);
-     
+
 //       setFormStructure(form);
-       
+
 //     } catch (err) {
 //       setError(err.message);
 //     } finally {
@@ -148,8 +148,15 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className='border'>
-      
+    <div className='max-w-2xl mx-auto my-24 '>
+      <div className='space-y-8'>
+        <h2 className='font-bold text-6xl text-center'>Create your forms
+          in seconds not hours</h2>
+        <p className='text-center'>Generate, publish and share your form right away with AI. Dive into insightful results, charts and analytics.</p>
+        <div className='text-center'>
+          <button className='bg-purple-500 hover:bg-purple-600 px-2 py-1 rounded-md text-white'>+ Create Form</button>
+        </div>
+      </div>
     </div>
   )
 }
