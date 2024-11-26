@@ -144,17 +144,31 @@
 //     </div>
 //   );
 // }
+import Image from 'next/image'
 import React from 'react'
 
 export default function page() {
   return (
-    <div className='max-w-2xl mx-auto my-24 '>
-      <div className='space-y-8'>
-        <h2 className='font-bold text-6xl text-center'>Create your forms
-          in seconds not hours</h2>
-        <p className='text-center'>Generate, publish and share your form right away with AI. Dive into insightful results, charts and analytics.</p>
-        <div className='text-center'>
-          <button className='bg-purple-500 hover:bg-purple-600 px-2 py-1 rounded-md text-white'>+ Create Form</button>
+    <div >
+      <div className='max-w-2xl mx-auto my-24 '>
+        <div className='space-y-8'>
+          <h2 className='font-bold text-6xl text-center'>Create your forms
+            in seconds not hours</h2>
+          <p className='text-center'>Generate, publish and share your form right away with AI. Dive into insightful results, charts and analytics.</p>
+          <div className='text-center'>
+            <button className='bg-purple-500 hover:bg-purple-600 px-2 py-1 rounded-md text-white'>+ Create Form</button>
+          </div>
+        </div>
+      </div>
+      <div className='border max-w-5xl mx-auto my-24'>
+        <div>
+          <h2>How It Works</h2>
+          <div className='flex justify-between space-x-24'>
+            <Image src="/one.webp" width={250} height={250} alt='step-one' />
+            <Image src="/two.webp" width={250} height={250} alt='step-two' />
+            <Image src="/three.webp" width={250} height={250} alt="step-three" />
+
+          </div>
         </div>
       </div>
     </div>
