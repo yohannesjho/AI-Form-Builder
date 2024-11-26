@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./_components/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,8 +22,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className="bg-sky-500 m-0"
+        className=" "
       >
+        <Header/>
         {children}
       </body>
     </html>
