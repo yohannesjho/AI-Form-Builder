@@ -1,3 +1,4 @@
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./_components/header";
@@ -20,13 +21,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className=" "
-      >
-        <Header/>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className=" "
+        >
+           <header>
+           <Header/>
+          </header>
+
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

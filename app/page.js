@@ -160,13 +160,22 @@ export default function page() {
           </div>
         </div>
       </div>
-      <div className='border max-w-5xl mx-auto my-24'>
+      <div className='max-w-5xl mx-auto my-24'>
         <div>
           <h2>How It Works</h2>
           <div className='flex justify-between space-x-24'>
-            <Image src="/one.webp" width={250} height={250} alt='step-one' />
-            <Image src="/two.webp" width={250} height={250} alt='step-two' />
-            <Image src="/three.webp" width={250} height={250} alt="step-three" />
+            <div className='w-64'>
+              <Image src="/one.webp" width={250} height={250} alt='step-one' />
+              <p className='text-center'>1. Add a prompt and describe the requirements for your form.</p>
+            </div>
+            <div className='w-64'>
+              <Image src="/two.webp" width={250} height={250} alt='step-two' />
+              <p> 2. Generate the form.</p>
+            </div>
+            <div className='w-64'>
+              <Image src="/three.webp" width={250} height={250} alt="step-three" />
+              <p className='text-center'>3. Check results, analytics and more.</p>
+            </div>
 
           </div>
         </div>
