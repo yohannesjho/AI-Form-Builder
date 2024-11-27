@@ -90,7 +90,7 @@ export default function FormBuilder() {
                 </label>
               ))
             ) : (
-              <> <input type="checkbox" name={field.label}  className='inline' /></>  
+              <> <input type="checkbox" name={field.label} className='inline' /></>
             )}
           </fieldset>
         );
@@ -107,6 +107,11 @@ export default function FormBuilder() {
       default:
         return null;
     }
+  };
+
+   // Function to handle printing
+   const handlePrint = () => {
+    window.print();
   };
 
   return (
@@ -131,10 +136,18 @@ export default function FormBuilder() {
       {error && <p className="text-red-500">{error}</p>}
 
       {formStructure && (
-        <form className="border p-4 mt-4 rounded-lg shadow">
-          <h2 className="text-lg font-semibold mb-4">{formStructure.formName}</h2>
-          {formStructure.fields.map(renderField)}
-        </form>
+        <div>
+          <form className="border p-4 mt-4 rounded-lg shadow">
+            <h2 className="text-lg font-semibold mb-4">{formStructure.formName}</h2>
+            {formStructure.fields.map(renderField)}
+          </form>
+          <button
+            onClick={handlePrint}
+            className="bg-blue-500 hover:bg-blue-600 duration-300 text-white px-4 py-2 mt-4 rounded-lg"
+          >
+            Print Form
+          </button>
+        </div>
       )}
     </div>
   );
