@@ -19,3 +19,26 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  form, form * {
+    visibility: visible;
+  }
+
+  form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the form both vertically and horizontally */
+    width: 80%; /* Optional: Adjust width for better fit on the printed page */
+    max-width: 600px; /* Optional: Set a maximum width */
+    padding: 20px; /* Optional: Add padding for spacing */
+    border: 1px solid #000; /* Optional: Add a border for clarity */
+    background: white; /* Ensure it has a white background */
+  }
+}
+

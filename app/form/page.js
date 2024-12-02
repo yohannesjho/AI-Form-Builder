@@ -116,7 +116,7 @@ export default function FormBuilder() {
 
   return (
     <div className="p-4 max-w-lg mx-auto">
-      <h1 className="text-xl text-emerald-50 font-bold mb-4">Dynamic Form Builder</h1>
+      <h1 className="text-xl font-bold mb-4">Dynamic Form Builder</h1>
       <div className="mb-6">
         <textarea
           value={formDescription}
